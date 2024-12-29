@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  streamlit:
+    image: python:3.9-slim
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./streamlit_app:/app
+    working_dir: /app
+    command: |
+      bash -c "pip install --no-cache-dir streamlit elasticsearch pymongo pandas requests pyecharts openpyxl && streamlit run dashboard.py"
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  elasticsearch:
+    image: elasticsearch:8.10.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.authc.api_key.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+volumes:
+  mongodb_data:
+  es_data:
