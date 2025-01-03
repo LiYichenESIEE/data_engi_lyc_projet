@@ -9,7 +9,7 @@ mydb = mongo['en_news']
 mycol = mydb['news_databases']
 mycol.create_index([("publishUrl", 1)], unique=True)
 
-es = Elasticsearch(['http://172.18.0.1:9200'])
+es = Elasticsearch(['http://170.11.0.1:9200']) "If implemented on another device, please change the ip address first"
 index_name = 'news_databases'
 
 headers = {
