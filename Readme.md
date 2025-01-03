@@ -47,5 +47,5 @@ Spider XINHUANET is a Python-based application designed for collecting, analyzin
 	docker-compose up -d
 	```
 ## Commission
-1-First open the local util.py file
-2-Find this code and change the local ip （es = Elasticsearch(['http://170.11.0.1:9200']) #If implemented on another device, please change the ip address first）
+- First open the local util.py file
+- Find this code and change the local ip （es = Elasticsearch(['http://170.11.0.1:9200']) #If implemented on another device, please change the ip address first）
